@@ -1,3 +1,5 @@
 corpus.converted/
 __pycache__/
+indexes/
+runs/
 *.swp
