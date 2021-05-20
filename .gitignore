@@ -1,4 +1,5 @@
 corpus.converted/
+topics.converted/
 __pycache__/
 indexes/
 runs/

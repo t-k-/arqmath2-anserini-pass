@@ -105,10 +105,16 @@ def prepare_feature_from_math(math_equation):
             full_pathes = full_pathes[:WIDTH]
 
         all_pathes = []
-        for full_path in full_pathes:
-            for prefix_path in prefix_path_generator(full_path):
-                all_pathes.append(prefix_path)
+
+        #for full_path in full_pathes:
+        #    for prefix_path in prefix_path_generator(full_path):
+        #        all_pathes.append(prefix_path)
+        #return " ".join(["_" + "_".join(path) for path in all_pathes])
+
+        for pathes in prefix_path_generator(full_pathes):
+            all_pathes.extend(pathes)
         return " ".join(["_" + "_".join(path) for path in all_pathes])
+
     else:
         # print("Error: ", res, "Use original math form: ", math_equation)
         return ""
