@@ -6,13 +6,21 @@ _2021_task2_topics=/tuna1/scratch/w32zhong/a0-engine/pya0/topics-and-qrels/topic
 _2021_task2_topics_refined=/tuna1/scratch/w32zhong/a0-engine/pya0/topics-and-qrels/topics.arqmath-2021-task2-refined.txt
 
 set -xe
+# ### switch version ###
+ver=bug
+rm -f corpus.converted indexes topics.converted runs
+ln -s corpus.converted.${ver} corpus.converted
+ln -s indexes.${ver} indexes
+ln -s topics.converted.${ver} topics.converted
+ln -s runs.${ver} runs
+
 # ### convert corpus ###
 # python prepare_corpus_crys.py --corpus /tuna1/scratch/w32zhong/mnt-corpus-task1.img --output corpus.converted/task1
-python prepare_corpus_crys.py --corpus /tuna1/scratch/w32zhong/mnt-corpus-task2.img --output corpus.converted/task2
-# 
+# python prepare_corpus_crys.py --corpus /tuna1/scratch/w32zhong/mnt-corpus-task2.img --output corpus.converted/task2
+#  
 # ### index ###
 # ./genn-anserini-index.sh corpus.converted/task1/ indexes/task1/
-./genn-anserini-index.sh corpus.converted/task2/ indexes/task2/
+# ./genn-anserini-index.sh corpus.converted/task2/ indexes/task2/
 
 ### convert topics ###
 mkdir -p topics.converted
