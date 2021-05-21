@@ -1,1 +1,0 @@
-/tuna1/scratch/w32zhong/arqmath/anserini-pass/topics.converted/topics.arqmath-2020-task1.json
