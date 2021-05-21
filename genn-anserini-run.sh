@@ -4,6 +4,8 @@ indexes="/tuna1/scratch/w32zhong/arqmath/anserini-pass/indexes"
 output="/tuna1/scratch/w32zhong/arqmath/anserini-pass/runs"
 anserini="/tuna1/scratch/w32zhong/anserini"
 
+n_threads=${1-40}
+
 run() {
 	k1=$1
 	b=$2
@@ -17,7 +19,7 @@ run() {
 			-topics $topic \
 			-output $runfile \
 			-topicfield $field \
-			-inmem -threads 40 -keepstopwords -stemmer none \
+			-inmem -threads $n_threads -keepstopwords -stemmer none \
 			-bm25 -bm25.k1 $k1 -bm25.b $b -hits 1000 -rm3
 	fi
 	set +x

@@ -9,10 +9,10 @@ set -xe
 # ### switch version ###
 ver=bug
 rm -f corpus.converted indexes topics.converted runs
-ln -s corpus.converted.${ver} corpus.converted
-ln -s indexes.${ver} indexes
-ln -s topics.converted.${ver} topics.converted
-ln -s runs.${ver} runs
+ln -s `pwd`/corpus.converted.${ver} corpus.converted
+ln -s `pwd`/indexes.${ver} indexes
+ln -s `pwd`/topics.converted.${ver} topics.converted
+ln -s `pwd`/runs.${ver} runs
 
 # ### convert corpus ###
 # python prepare_corpus_crys.py --corpus /tuna1/scratch/w32zhong/mnt-corpus-task1.img --output corpus.converted/task1
@@ -23,7 +23,6 @@ ln -s runs.${ver} runs
 # ./genn-anserini-index.sh corpus.converted/task2/ indexes/task2/
 
 ### convert topics ###
-mkdir -p topics.converted
 python prepare_topic_from_json.py -i $_2020_task1_topics -o topics.converted/$(basename $_2020_task1_topics)
 python prepare_topic_from_tsv.py -i $_2020_task2_topics -o topics.converted/$(basename $_2020_task2_topics)
 python prepare_topic_from_tsv.py -i $_2021_task1_topics -o topics.converted/$(basename $_2021_task1_topics)
@@ -33,4 +32,4 @@ python prepare_topic_from_tsv.py -i $_2021_task2_topics_refined -o topics.conver
 
 ### search and generate runs ###
 ln -sf `pwd`/topics.converted/topics.arqmath-2020-task1.json topics.converted/topics.arqmath-2020-task1.txt
-./genn-anserini-run.sh
+./genn-anserini-run.sh 1 | tee runs/run.log
