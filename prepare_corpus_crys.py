@@ -106,14 +106,14 @@ def prepare_feature_from_math(math_equation):
 
         all_pathes = []
 
-        #for full_path in full_pathes:
-        #    for prefix_path in prefix_path_generator(full_path):
-        #        all_pathes.append(prefix_path)
-        #return " ".join(["_" + "_".join(path) for path in all_pathes])
-
-        for pathes in prefix_path_generator(full_pathes):
-            all_pathes.extend(pathes)
+        for full_path in full_pathes:
+            for prefix_path in prefix_path_generator(full_path):
+                all_pathes.append(prefix_path)
         return " ".join(["_" + "_".join(path) for path in all_pathes])
+
+        #for pathes in prefix_path_generator(full_pathes):
+        #    all_pathes.extend(pathes)
+        #return " ".join(["_" + "_".join(path) for path in all_pathes])
 
     else:
         # print("Error: ", res, "Use original math form: ", math_equation)
@@ -158,7 +158,6 @@ def main():
     root_path = args.corpus
     output_dir = args.output_dir
     os.makedirs(output_dir, exist_ok=True)
-
     subfolders = sorted(listdir(root_path), key=lambda k: int(k))
     add_fid = 'task2' in args.corpus
     for subfolder in tqdm(subfolders, desc="Looping over each folders"):
