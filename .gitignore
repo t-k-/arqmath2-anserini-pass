@@ -1,6 +1,6 @@
-corpus.converted/
-topics.converted/
+corpus.converted*/
+topics.converted*/
 __pycache__/
-indexes/
-runs/
+indexes*/
+runs*/
 *.swp

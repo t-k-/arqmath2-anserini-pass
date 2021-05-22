@@ -7,7 +7,7 @@ _2021_task2_topics_refined=/tuna1/scratch/w32zhong/a0-engine/pya0/topics-and-qre
 
 set -xe
 # ### switch version ###
-ver=bug
+ver=prefixes
 rm -f corpus.converted indexes topics.converted runs
 ln -s `pwd`/corpus.converted.${ver} corpus.converted
 ln -s `pwd`/indexes.${ver} indexes
