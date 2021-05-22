@@ -23,13 +23,13 @@ ln -s `pwd`/runs.${ver} runs
 # ./genn-anserini-index.sh corpus.converted/task2/ indexes/task2/
 
 ### convert topics ###
-python prepare_topic_from_json.py -i $_2020_task1_topics -o topics.converted/$(basename $_2020_task1_topics)
-python prepare_topic_from_tsv.py -i $_2020_task2_topics -o topics.converted/$(basename $_2020_task2_topics)
-python prepare_topic_from_tsv.py -i $_2021_task1_topics -o topics.converted/$(basename $_2021_task1_topics)
-python prepare_topic_from_tsv.py -i $_2021_task1_topics_refined -o topics.converted/$(basename $_2021_task1_topics_refined)
-python prepare_topic_from_tsv.py -i $_2021_task2_topics -o topics.converted/$(basename $_2021_task2_topics)
-python prepare_topic_from_tsv.py -i $_2021_task2_topics_refined -o topics.converted/$(basename $_2021_task2_topics_refined)
+#python prepare_topic_from_json.py -i $_2020_task1_topics -o topics.converted/$(basename $_2020_task1_topics)
+#python prepare_topic_from_tsv.py -i $_2020_task2_topics -o topics.converted/$(basename $_2020_task2_topics)
+#python prepare_topic_from_tsv.py -i $_2021_task1_topics -o topics.converted/$(basename $_2021_task1_topics)
+#python prepare_topic_from_tsv.py -i $_2021_task1_topics_refined -o topics.converted/$(basename $_2021_task1_topics_refined)
+#python prepare_topic_from_tsv.py -i $_2021_task2_topics -o topics.converted/$(basename $_2021_task2_topics)
+#python prepare_topic_from_tsv.py -i $_2021_task2_topics_refined -o topics.converted/$(basename $_2021_task2_topics_refined)
 
 ### search and generate runs ###
 ln -sf `pwd`/topics.converted/topics.arqmath-2020-task1.json topics.converted/topics.arqmath-2020-task1.txt
-./genn-anserini-run.sh 1 | tee runs/run.log
+./genn-anserini-run.sh 1

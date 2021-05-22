@@ -20,7 +20,8 @@ run() {
 			-output $runfile \
 			-topicfield $field \
 			-inmem -threads $n_threads -keepstopwords -stemmer none \
-			-bm25 -bm25.k1 $k1 -bm25.b $b -hits 1000 -rm3
+			-bm25 -bm25.k1 $k1 -bm25.b $b -hits 1000 -rm3 \
+		| tee $output/run.$task.log | tee $output/run.all.log
 	fi
 	set +x
 }
