@@ -21,10 +21,14 @@ run() {
 			-topicfield $field \
 			-inmem -threads $n_threads -keepstopwords -stemmer none \
 			-bm25 -bm25.k1 $k1 -bm25.b $b -hits 1000 -rm3 \
-		| tee $output/run.$task.log | tee $output/run.all.log
+		| tee -a $output/run.$task.log | tee -a $output/run.all.log
 	fi
 	set +x
 }
+
+rm -f $output/run.all.log
+rm -f $output/run.task1.log
+rm -f $output/run.task2.log
 
 for year in 2020 2021; do
 	mkdir -p ${output}/arqmath${year}
